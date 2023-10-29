@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Home from './src/app/Home';
 
+
 const Stack = createNativeStackNavigator();
 
 const Main = ({ navigation }) => (
@@ -34,7 +35,7 @@ export default function App() {
         <Stack.Screen
           name="Main"
           component={Main}
-          options={{ title: 'DrinkWine - HomePage', headerShown: true }}
+          options={{ title: 'DrinkWine - HomePage', headerShown: false }}
         />
         <Stack.Screen
           name="Home"
