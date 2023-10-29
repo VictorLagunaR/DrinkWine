@@ -1,40 +1,18 @@
 import * as React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Estilos from '../Estilos/Styles';
+import Home from "../app/Home";
 import MinhaConta from "../app/MinhaConta";
 import Sacola from "../app/Sacola";
 import Catalogo from "../app/Catalogo";
 
-function HomeScreen() {
-  return (
-    <View style={Estilos.background}>
-      <Text style={Estilos.text}>Home!</Text>
-    </View>
-  );
-}
-
-function SacolaScreen() {
-  return (
-    <Sacola/>
-  );
-}
-function CatalogoScreen() {
-  return (
-    <Catalogo/>
-  );
-}
-function MinhaContaScreen() {
-  return (
-    <MinhaConta/>
-  );
-}
+const Tab = createBottomTabNavigator();
 
 function MyTabBar({ state, descriptors, navigation }) {
   return (
-    <View style={{ flexDirection: 'row' }}>
+    <View style={{ flexDirection: "row" }}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const label =
@@ -48,7 +26,7 @@ function MyTabBar({ state, descriptors, navigation }) {
 
         const onPress = () => {
           const event = navigation.emit({
-            type: 'tabPress',
+            type: "tabPress",
             target: route.key,
           });
 
@@ -59,7 +37,7 @@ function MyTabBar({ state, descriptors, navigation }) {
 
         const onLongPress = () => {
           navigation.emit({
-            type: 'tabLongPress',
+            type: "tabLongPress",
             target: route.key,
           });
         };
@@ -72,11 +50,9 @@ function MyTabBar({ state, descriptors, navigation }) {
             testID={options.tabBarTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-            style={[Estilos.navigatorBar,{ flex: 1 }]}
+            style={{ flex: 1 }}
           >
-            
-           
-            <Text style={[Estilos.text,{ color: isFocused ? '#454545' : '#fff'}]}>
+            <Text style={{ color: isFocused ? "#673ab7" : "#222" }}>
               {label}
             </Text>
           </TouchableOpacity>
@@ -86,15 +62,13 @@ function MyTabBar({ state, descriptors, navigation }) {
   );
 }
 
-const Tab = createBottomTabNavigator();
-
-export default function App() {
+export default () => {
   return (
-      <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />} screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="home" component={HomeScreen} />
-        <Tab.Screen name="search" component={CatalogoScreen} />
-        <Tab.Screen name="bag" component={SacolaScreen} />
-        <Tab.Screen name="user" component={MinhaContaScreen} />
+    <NavigationContainer>
+      <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
+        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Settings" component={Sacola} />
       </Tab.Navigator>
+    </NavigationContainer>
   );
 }

@@ -12,11 +12,13 @@ export default StyleSheet.create({
     },
     navigatorBar: {
         height:60,
-        textAlignVertical:'center',
-        textAlign:'center',
+        alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor:'#440C0C',
     },
     text:{
-        color:'#fff'
+        color:'#fff',
+        textAlignVertical:'center',
+        textAlign:'center',
     }
 })
