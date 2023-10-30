@@ -17,6 +17,7 @@ export default StyleSheet.create({
         backgroundColor:'#440C0C',
     },
     text:{
+        fontSize:15,
         color:'#fff',
         textAlignVertical:'center',
         textAlign:'center',
