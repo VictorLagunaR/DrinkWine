@@ -8,59 +8,59 @@ import Estilos from '../Estilos/Styles';
 import MinhaConta from "../app/MinhaConta";
 import Sacola from "../app/Sacola";
 import Catalogo from "../app/Catalogo";
-import {carregaVinhos} from '../components/CarregaVinhos'
+import { carregaVinhos } from '../components/CarregaVinhos'
 
 //data
 import vinhos from '../data/vinhos'
 
-function HomeScreen() {
+function HomeScreen({navigation}) {
   return (
-    <SafeAreaView style={{flex:1, backgroundColor:"#440C0C",}}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#440C0C", }}>
       <ScrollView >
         <View style={Estilos.headerImage}><Image source={require('../images/logoPequena.png')} /></View>
         <View style={Estilos.background}>
-          <TouchableOpacity style={{flex:1, justifyContent:'center', width:"100%"}}>
-            <Image source={require("../images/banner.png")} style={{resizeMode:"contain", width:"100%", borderRadius:15}} />
+          <TouchableOpacity style={{ flex: 1, justifyContent: 'center', width: "100%" }}>
+            <Image source={require("../images/banner.png")} style={{ resizeMode: "contain", width: "100%", borderRadius: 15 }} />
           </TouchableOpacity>
           <View style={Estilos.secao}>
             <Text style={Estilos.text}>Aqui vai vir as opções de algumas ofertar em imagens </Text>
           </View>
           <View style={Estilos.secaoVinhos}>
-            <Text style={{color:'#fff9', fontSize:19,width:"100%",textAlign:'left'}}>Ofertas</Text>
+            <Text style={{ color: '#fff9', fontSize: 19, width: "100%", textAlign: 'left', marginBottom:10 }}>Ofertas</Text>
             <View style={Estilos.ofertas}>
-      {vinhos.map((vinho) => (
-          <TouchableOpacity
-            style = {Estilos.vinhoOferta}
-            onPress={() => {
-              navigation.navigate("Vinho", { vinho });
-            }}
-          >
-            <Image source={vinho.uri} style={Estilos.vinhoOfertaImagem}></Image>
-            <Text style={{ color: "white" }}>{vinho.preco}</Text>
-          </TouchableOpacity>
-      ))}
-    </View>
+              {vinhos.map((vinho) => (
+                <TouchableOpacity
+                  style={Estilos.vinhoOferta}
+                  onPress={() => {
+                    navigation.navigate("Vinho", { vinho });
+                  }}
+                >
+                  <Image source={vinho.uri} style={Estilos.vinhoOfertaImagem}></Image>
+                  <Text style={{ color: "white" }}>{vinho.preco}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
 
           </View>
           <View style={Estilos.secao}>
             <Text style={Estilos.tituloSecao}>Sobre</Text>
-            <Text style={{color:"white", fontSize:19, textAlign:'center'}}>
-              Bem-vindo à Drink Wine, 
-              o seu destino premium para 
-              os amantes de vinho! Nossa 
-              loja foi cuidadosamente 
-              concebida para proporcionar 
-              uma experiência única de 
-              descoberta, prazer e apreciação 
-              do mundo fascinante dos 
-              vinhos. Com uma ampla seleção 
-              de rótulos cuidadosamente 
-              selecionados de todas as regiões 
-              vinícolas mais renomadas, nossa 
-              missão é oferecer a você a 
-              oportunidade de explorar o 
-              caráter, a diversidade e o sabor 
-              inigualável que o vinho tem 
+            <Text style={{ color: "white", fontSize: 19, textAlign: 'center' }}>
+              Bem-vindo à Drink Wine,
+              o seu destino premium para
+              os amantes de vinho! Nossa
+              loja foi cuidadosamente
+              concebida para proporcionar
+              uma experiência única de
+              descoberta, prazer e apreciação
+              do mundo fascinante dos
+              vinhos. Com uma ampla seleção
+              de rótulos cuidadosamente
+              selecionados de todas as regiões
+              vinícolas mais renomadas, nossa
+              missão é oferecer a você a
+              oportunidade de explorar o
+              caráter, a diversidade e o sabor
+              inigualável que o vinho tem
               a oferecer.
             </Text>
           </View>
@@ -72,7 +72,7 @@ function HomeScreen() {
 
 const Home = createBottomTabNavigator();
 
-export default function App({navigation}) {
+export default function App({ navigation }) {
   return (
     <Home.Navigator
       screenOptions={({ route }) => ({
@@ -112,7 +112,7 @@ export default function App({navigation}) {
       <Home.Screen name="Catalogo" component={Catalogo} />
       <Home.Screen name="Pedidos" component={Sacola} />
       <Home.Screen name="Minha Conta" component={MinhaConta} />
-      
+
     </Home.Navigator>
   );
 }
