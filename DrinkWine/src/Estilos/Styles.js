@@ -34,6 +34,12 @@ export default StyleSheet.create({
         justifyContent:"center",
         alignItems:"center"
     },
+    secaoVinhos: {
+        marginTop:20,
+        alignItems:'baseline',
+        justifyContent:"center",
+        alignItems:"flex-start"
+    },
     tituloSecao: {
         color:'white',
         fontSize:33,
@@ -43,5 +49,26 @@ export default StyleSheet.create({
         borderBottomColor:"#fff9",
         width:'80%',
         marginBottom:20
+    },
+    ofertas: {
+        flexDirection:'row',
+        gap:10,
+        alignItems:"flex-start",
+        justifyContent:"flex-start"
+    },
+    vinhoOferta: {
+        backgroundColor:"#8D8D8D",
+        alignItems:"center",
+        backgroundColor:"#252222",
+        alignItems:"center",
+        justifyContent:"center",
+        width:130,
+        height:200,
+        fontSize:20,
+        borderRadius:10,
+    },
+    vinhoOfertaImagem: {
+        width: 90,
+        resizeMode:"contain"
     }
 })

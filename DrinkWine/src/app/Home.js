@@ -1,13 +1,17 @@
 import * as React from 'react';
 import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Estilos from '../Estilos/Styles';
 import MinhaConta from "../app/MinhaConta";
 import Sacola from "../app/Sacola";
 import Catalogo from "../app/Catalogo";
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {carregaVinhos} from '../components/CarregaVinhos'
+
+//data
+import vinhos from '../data/vinhos'
 
 function HomeScreen() {
   return (
@@ -16,13 +20,27 @@ function HomeScreen() {
         <View style={Estilos.headerImage}><Image source={require('../images/logoPequena.png')} /></View>
         <View style={Estilos.background}>
           <TouchableOpacity style={{flex:1, justifyContent:'center', width:"100%"}}>
-            <Image source={require("../images/banner.png")} style={{resizeMode:"contain", width:"100%"}} />
+            <Image source={require("../images/banner.png")} style={{resizeMode:"contain", width:"100%", borderRadius:15}} />
           </TouchableOpacity>
           <View style={Estilos.secao}>
             <Text style={Estilos.text}>Aqui vai vir as opções de algumas ofertar em imagens </Text>
           </View>
-          <View style={Estilos.secao}>
-            <Text style={{color:'#fff9', fontSize:19,width:"100%",textAlign:'left'}}>Ofertas </Text>
+          <View style={Estilos.secaoVinhos}>
+            <Text style={{color:'#fff9', fontSize:19,width:"100%",textAlign:'left'}}>Ofertas</Text>
+            <View style={Estilos.ofertas}>
+      {vinhos.map((vinho) => (
+          <TouchableOpacity
+            style = {Estilos.vinhoOferta}
+            onPress={() => {
+              navigation.navigate("Vinho", { vinho });
+            }}
+          >
+            <Image source={vinho.uri} style={Estilos.vinhoOfertaImagem}></Image>
+            <Text style={{ color: "white" }}>{vinho.preco}</Text>
+          </TouchableOpacity>
+      ))}
+    </View>
+
           </View>
           <View style={Estilos.secao}>
             <Text style={Estilos.tituloSecao}>Sobre</Text>
@@ -52,25 +70,9 @@ function HomeScreen() {
   );
 }
 
-function SacolaScreen() {
-  return (
-    <Sacola />
-  );
-}
-function CatalogoScreen() {
-  return (
-    <Catalogo />
-  );
-}
-function MinhaContaScreen() {
-  return (
-    <MinhaConta />
-  );
-}
-
 const Home = createBottomTabNavigator();
 
-export default function App() {
+export default function App({navigation}) {
   return (
     <Home.Navigator
       screenOptions={({ route }) => ({
@@ -107,9 +109,10 @@ export default function App() {
       })}
     >
       <Home.Screen name="Início" component={HomeScreen} />
-      <Home.Screen name="Catalogo" component={CatalogoScreen} />
-      <Home.Screen name="Pedidos" component={SacolaScreen} />
-      <Home.Screen name="Minha Conta" component={MinhaContaScreen} />
+      <Home.Screen name="Catalogo" component={Catalogo} />
+      <Home.Screen name="Pedidos" component={Sacola} />
+      <Home.Screen name="Minha Conta" component={MinhaConta} />
+      
     </Home.Navigator>
   );
 }

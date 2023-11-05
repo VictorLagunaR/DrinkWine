@@ -3,6 +3,7 @@ import { TouchableOpacity, StyleSheet, Text, View, Button, Image } from 'react-n
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Home from './src/app/Home';
+import Vinho from './src/app/Vinho'
 
 
 const Stack = createNativeStackNavigator();
@@ -41,6 +42,11 @@ export default function App() {
           name="Home"
           component={Home}
           options={{ title: 'DrinkWine - HomePage', headerShown: false }}
+        />
+        <Stack.Screen
+          name="Vinho"
+          component={Vinho}
+          options={{ title: 'DrinkWine - Vinho', headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
