@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, Image, ScrollView, FlatList } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -8,38 +8,44 @@ import Estilos from '../Estilos/Styles';
 import MinhaConta from "../app/MinhaConta";
 import Sacola from "../app/Sacola";
 import Catalogo from "../app/Catalogo";
-import { carregaVinhos } from '../components/CarregaVinhos'
+import Vinho from "../app/Vinho"
+import VinhoCategoria from "../app/VinhoCategoria"
 
 //data
 import vinhos from '../data/vinhos'
 
-function HomeScreen({navigation}) {
+function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#440C0C", }}>
       <ScrollView >
         <View style={Estilos.headerImage}><Image source={require('../images/logoPequena.png')} /></View>
         <View style={Estilos.background}>
-          <TouchableOpacity style={{ flex: 1, justifyContent: 'center', width: "100%" }}>
+          <TouchableOpacity style={{ flex: 1, justifyContent: 'center', width: "100%" }} onPress={() => {
+            navigation.navigate("Catalogo");
+          }}>
             <Image source={require("../images/banner.png")} style={{ resizeMode: "contain", width: "100%", borderRadius: 15 }} />
           </TouchableOpacity>
           <View style={Estilos.secao}>
             <Text style={Estilos.text}>Aqui vai vir as opções de algumas ofertar em imagens </Text>
           </View>
           <View style={Estilos.secaoVinhos}>
-            <Text style={{ color: '#fff9', fontSize: 19, width: "100%", textAlign: 'left', marginBottom:10 }}>Ofertas</Text>
-            <View style={Estilos.ofertas}>
-              {vinhos.map((vinho) => (
+            <Text style={{ color: '#fff9', fontSize: 19, width: "100%", textAlign: 'left', marginBottom: 10 }}>Ofertas</Text>
+            <FlatList
+              data={vinhos}
+              keyExtractor={(vinho) => vinho.id}
+              horizontal
+
+              renderItem={({ item }) =>
                 <TouchableOpacity
                   style={Estilos.vinhoOferta}
                   onPress={() => {
-                    navigation.navigate("Vinho", { vinho });
+                    navigation.navigate("Vinho", item );
                   }}
                 >
-                  <Image source={vinho.uri} style={Estilos.vinhoOfertaImagem}></Image>
-                  <Text style={{ color: "white" }}>{vinho.preco}</Text>
-                </TouchableOpacity>
-              ))}
-            </View>
+                  <Image source={item.uri} style={Estilos.vinhoOfertaImagem}></Image>
+                  <Text style={{ color: "white", position: 'absolute', bottom: 15 }}>R${item.preco}</Text>
+                </TouchableOpacity>}
+            />
 
           </View>
           <View style={Estilos.secao}>
@@ -99,10 +105,10 @@ export default function App({ navigation }) {
 
           return <Image source={link} />;
         },
-        tabBarActiveTintColor: '#454545',
+        tabBarActiveTintColor: '#4f0d0a',
         tabBarInactiveTintColor: '#fff',
-        tabBarInactiveBackgroundColor: "#440C0C",
-        tabBarActiveBackgroundColor: "#490C0C",
+        tabBarInactiveBackgroundColor: "#460D0B",
+        tabBarActiveBackgroundColor: "#470c0a",
         tabBarStyle: Estilos.navigatorBar,
         tabBarShowLabel: false,
         headerShown: false,
@@ -112,7 +118,9 @@ export default function App({ navigation }) {
       <Home.Screen name="Catalogo" component={Catalogo} />
       <Home.Screen name="Pedidos" component={Sacola} />
       <Home.Screen name="Minha Conta" component={MinhaConta} />
+      <Home.Screen name="Vinho" component={Vinho} options={{ tabBarButton: () => null }} />
+      <Home.Screen name="VinhoCategoria" component={VinhoCategoria} options={{ tabBarButton: () => null }} />
 
     </Home.Navigator>
   );
-}
+} 
