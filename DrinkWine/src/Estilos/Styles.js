@@ -69,7 +69,7 @@ export default StyleSheet.create({
         justifyContent:"flex-start"
     },
     vinhoOferta: {
-        backgroundColor:"#252222",
+        backgroundColor:"#343434e0",
         alignItems:"center",
         justifyContent:"flex-start",
         width:130,
@@ -153,6 +153,23 @@ export default StyleSheet.create({
         textAlign:"center",
         color:"white",
         fontSize:30
-    }
+    },
+    vinhosContainer: {
+        flexDirection:"row",
+        justifyContent:"space-between",
+        alignItems:"flex-start",
+        marginHorizontal:10
+    },
+    vinhoCategorizado: {
+        backgroundColor:"#343434e0",
+        alignItems:"center",
+        justifyContent:"flex-start",
+        width:"40%",
+        height:200,
+        fontSize:20,
+        borderRadius:10,
+        marginRight:10
+        
+    },
 
 })

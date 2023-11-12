@@ -4,42 +4,22 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Estilos from '../Estilos/Styles';
 
 import {Dimensions} from 'react-native';
-
-
-function imageRequire(tipo) {
-  let imagem;
-  switch (tipo) {
-    case "Rosé":
-      imagem = require("../images/uvaRose.png");
-      break;
-    case "Branco":
-      imagem = require("../images/uvaBranco.png");
-      break;
-    case "Licor":
-      imagem = require("../images/uvaLicor.png");
-      break;
-    default:
-      imagem = require("../images/uvaTinto.png");
-      break;
-  }
-
-  return imagem
-
-}
+import FindImageBackground from "../javascript/FindImageBackground";
 
 export default function App({ navigation, route }) {
+  const vinho = route.params;
 
   const height = Dimensions.get('window').height * 0.5
 
   return (
     <SafeAreaView style={Estilos.backgroundVinho}>
     <ScrollView >
-      <ImageBackground source={imageRequire(route.params.tipo)} style={{ height:height, justifyContent: "center", padding:20 }} resizeMode='contain'>
+      <ImageBackground source={FindImageBackground(route.params.categoria)} style={{ height:height, justifyContent: "center", padding:20 }} resizeMode='contain'>
         <View style={{ flex: 1,justifyContent:"space-between", alignItems:"center", flexDirection:"row", marginRight:20 }}>
           <Image source={route.params.uri} style={Estilos.vinhoPrincipal} />
           <View style={{minWidth:150, justifyContent:"center", alignItems:"center"}}>
             <Text style={Estilos.precoVinho}>R$ {route.params.preco}</Text>
-            <TouchableOpacity style={Estilos.botaoComprar} onPress={()=> {navigation.navigate("Pedidos")}}>
+            <TouchableOpacity style={Estilos.botaoComprar} onPress={()=> {navigation.navigate("Pedidos",vinho)}}>
               <Text style={Estilos.textoComprar}>Comprar</Text>
             </TouchableOpacity>
 
