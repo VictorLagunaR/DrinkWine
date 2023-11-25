@@ -13,6 +13,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Sacola({ navigation, route }) {
+  console.log(route)
   const [dadosSalvos, setDadosSalvos] = useState(null);
 
   useEffect(() => {
@@ -38,33 +39,49 @@ export default function Sacola({ navigation, route }) {
   const GenerateItems = () => {
     if (dadosSalvos !== null) {
       return(
-        <View>
+        <View style={Estilos.cards}>
           {dadosSalvos.map((vinho) => {
             return (
-              <Text key={vinho.id} style={{ color: "white", paddingTop:40}}>{vinho.nome}</Text>
+              <View key={vinho.id} style={Estilos.card}>
+
+                <View style={Estilos.cardContainer}>
+                  <Image source={vinho.uri} style={Estilos.cardImage}/>
+                  <View style={{gap:5}}>
+                    <Text style={Estilos.cardNome}>{vinho.nome}</Text>
+                    <Text style={Estilos.cardNomeSecundario}>{vinho.nomeSecundario}</Text>
+                  </View>
+                </View>
+                <View style={Estilos.cardBottom}>
+                  <Text style={Estilos.cardPreco}>R${vinho.preco}</Text>
+                  <View style={Estilos.cardQuantidade}>
+                    <Text style={Estilos.cardQuantidadeNum}>
+                      {vinho.quantidade}
+                    </Text>
+                  </View>
+                </View>
+                <TouchableOpacity style={Estilos.cardDelete}><Image style={Estilos.cardDeleteImage} source={require("../images/delete.png")}/></TouchableOpacity>
+              </View>
             );
           })}
         </View>
       )
     } else {
       return (
-        <Text style={{ color: "white",paddingTop:40 }}>SUa sacola está vazia {}</Text>
+        <Text style={{ color: "white",paddingTop:40 }}>Sua sacola está vazia {}</Text>
       );
     }
   };
 
   return (
-    // <SafeAreaView style={Estilos.backgroundVinho}>
-    //   <ScrollView>
-    <View style={Estilos.background}>
-      {/* {vinhos.map((vinho) => {
-              return(
-                <Text style = {{color: "white"}}>vinho</Text>
-                )
-              })} */}
-
-      <GenerateItems/>
-      {/* <Text style={{ color: "white" }}>{dadosSalvos}</Text> */}
+ 
+    <View style={Estilos.backgroundSacola}>
+      <Text style={Estilos.tituloSacola}>Meus Pedidos</Text>
+      <SafeAreaView style={Estilos.backgroundVinho}>
+      <ScrollView>
+        <GenerateItems/>
+      </ScrollView>
+      </SafeAreaView>
+      {/* <Text style={{ color: "white" }}>{route.params.quantidade}</Text> */}
     </View>
     //   </ScrollView>
     // </SafeAreaView>

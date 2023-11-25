@@ -17,19 +17,26 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function App({ navigation, route }) {
-  const vinho = route.params;
+  let vinho = route.params;
+  vinho["quantidade"] = 1;
+  // console.log(vinho)
   const [vinhos, setVinhos] = useState([]);
   
   const setItem = async () => {
     let newWines = [...vinhos, vinho]
     try {
       let getWines = await AsyncStorage.getItem("vinhos")
-      if (getWines !== undefined && getWines !== undefined) {
+      if (getWines !== null && getWines !== undefined) {
         getWines = JSON.parse(getWines);
         const verifyWine = getWines.filter((vinho) => {return vinho.id == route.params.id})
-        console.log(verifyWine + "\n")
+        // console.log(verifyWine + "\n")
         if (verifyWine.length > 0) {
-          console.log(verifyWine.length + " aqui")
+          // console.log(verifyWine[0] + " aqui")
+          // vinhos.filter((vinho) => {
+          //   if(vinho.id == verifyWine[0].id){
+          //     vinho["quantidade"] = vinho["quantidade"] + 1;
+          //   } 
+          // })
           newWines = vinhos
         }else{
           newWines = [...getWines, vinho]
