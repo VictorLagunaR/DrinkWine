@@ -2,7 +2,9 @@ import * as React from 'react';
 import { View, Text, TouchableOpacity, Image, ScrollView, FlatList } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import IconOcticons from 'react-native-vector-icons/Octicons';
+import { StatusBar } from 'react-native';
+
 
 import Estilos from '../Estilos/Styles';
 import MinhaConta from "../app/MinhaConta";
@@ -11,12 +13,37 @@ import Catalogo from "../app/Catalogo";
 import Vinho from "../app/Vinho"
 import VinhoCategoria from "../app/VinhoCategoria"
 
-//data
+// data
 import vinhos from '../data/vinhos'
+
+const CustomTabBarIcon = ({ focused, iconName, style, iconLibrary }) => {
+  const IconComponent = iconLibrary || IconOcticons;
+
+  let tabText = '';
+
+  if (iconName === 'home') {
+    tabText = ' Tela inicial ';
+  } else if (iconName === 'search') {
+    tabText = ' Catálogo ';
+  } else if (iconName === 'inbox') {
+    tabText = ' Pedidos ';
+  } else if (iconName === 'person') {
+    tabText = ' Minha Conta ';
+  }
+
+  return (
+    <View style={{ alignItems: 'center' }}>
+      <IconComponent name={iconName} size={25} color={focused ? '#454545' : '#fff'} style={style} />
+      <Text style={{ color: focused ? '#454545' : '#fff', fontSize: 12 }}>{tabText}</Text>
+    </View>
+  );
+};
+
 
 function HomeScreen({ navigation }) {
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#440C0C", }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#440C0C"}}>
+      <StatusBar barStyle="light-content" backgroundColor="#440C0C"/>
       <ScrollView >
         <View style={Estilos.headerImage}><Image source={require('../images/logoPequena.png')} /></View>
         <View style={Estilos.background}>
@@ -82,28 +109,26 @@ export default function App({ navigation }) {
   return (
     <Home.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
+        tabBarIcon: ({ focused }) => {
+          let iconDefault, iconFocused;
 
           if (route.name === 'Início') {
-            link = focused
-              ? require('../images/homeBold.png')
-              : require('../images/home.png');
+            iconName = focused ? 'home' : 'home';
           } else if (route.name === 'Catalogo') {
-            link = focused
-              ? require('../images/catalogoBold.png')
-              : require('../images/catalogo.png');
+            iconName = focused ? 'search' : 'search';
           } else if (route.name === 'Pedidos') {
-            link = focused
-              ? require('../images/pedidosBold.png')
-              : require('../images/pedidos.png');
+            iconName = focused ? 'inbox' : 'inbox';
           } else if (route.name === 'Minha Conta') {
-            link = focused
-              ? require('../images/minhaContaBold.png')
-              : require('../images/minhaConta.png');
+            iconName = focused ? 'person' : 'person';
           }
 
-          return <Image source={link} />;
+          return (
+            <CustomTabBarIcon
+              focused={focused}
+              iconName={iconName}
+              style={Estilos.tabBarIcon}
+            />
+          );
         },
         tabBarActiveTintColor: '#4f0d0a',
         tabBarInactiveTintColor: '#fff',
@@ -120,7 +145,6 @@ export default function App({ navigation }) {
       <Home.Screen name="Minha Conta" component={MinhaConta} />
       <Home.Screen name="Vinho" component={Vinho} options={{ tabBarButton: () => null }} />
       <Home.Screen name="VinhoCategoria" component={VinhoCategoria} options={{ tabBarButton: () => null }} />
-
     </Home.Navigator>
   );
-} 
+}

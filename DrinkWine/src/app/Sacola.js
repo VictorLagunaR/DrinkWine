@@ -75,7 +75,7 @@ export default function Sacola({ navigation, route }) {
   return (
  
     <View style={Estilos.backgroundSacola}>
-      <Text style={Estilos.tituloSacola}>Meus Pedidos</Text>
+      <Text style={Estilos.tituloSacola}> Meus Pedidos </Text>
       <SafeAreaView style={Estilos.backgroundVinho}>
       <ScrollView>
         <GenerateItems/>

@@ -31,7 +31,7 @@ export default StyleSheet.create({
         width:"100%"
     },
     navigatorBar: {
-        height:65,
+        height:75,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor:'#460D0B',
@@ -120,9 +120,10 @@ export default StyleSheet.create({
         backgroundColor:"#51CF4Fbf",
         height:50,
         width:"100%",
-        borderRadius:20,
+        borderRadius:15,
         alignItems:"center",
-        justifyContent:"center"
+        justifyContent:"center",
+        marginTop: 10
     },
     textoComprar: {
         fontSize:25,
@@ -140,18 +141,26 @@ export default StyleSheet.create({
     },
     nomeVinho: {
         fontSize:32,
-        marginBottom: 5,
+        marginTop: 40,
         color:"white"
     }, 
     nomeSecundario: {
         color:"white",
-        fontSize:20
+        fontSize:20,
+        marginTop: 5
     },
-
+    vinhoTituloDescricao:{
+        fontSize:30,
+        marginTop: 30,
+        color:"white",
+    },
     descricao: {
         color:"white",
         fontSize:18,
-        textAlign:"auto"
+        textAlign:"auto",
+        marginLeft: 5,
+        marginTop: 10,
+        marginBottom: 25
     },
     vinhoBanner: {
         borderRadius:20,

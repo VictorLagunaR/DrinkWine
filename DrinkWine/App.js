@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TouchableOpacity, StyleSheet, Text, View, Button, Image } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'react-native';
 import Home from './src/app/Home';
 import Vinho from './src/app/Vinho'
 
@@ -10,6 +11,7 @@ const Stack = createNativeStackNavigator();
 
 const Main = ({ navigation }) => (
   <View style={styles.container}>
+    <StatusBar barStyle="light-content" backgroundColor="#440C0C"/>
     <Image style={styles.logo} source={require("./src/images/logo.png")}></Image>
     <Text style={styles.textLogin}>Entrar com:</Text>
     <TouchableOpacity style={styles.logoGoogleFundo} onPress={() => navigation.navigate('Home')}>

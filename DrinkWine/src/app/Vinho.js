@@ -95,7 +95,7 @@ export default function App({ navigation, route }) {
           <Text style={Estilos.nomeVinho}>{vinho.nome}</Text>
           <Text style={Estilos.nomeSecundario}>{vinho.nomeSecundario}</Text>
 
-          <Text style={Estilos.vinhoTituloDescricao}>Descricao:</Text>
+          <Text style={Estilos.vinhoTituloDescricao}> Descricao: </Text>
           <Text style={Estilos.descricao}>{vinho.descricao}</Text>
         </View>
       </ScrollView>

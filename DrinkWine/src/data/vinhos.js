@@ -20,15 +20,6 @@ export default listaVinhos = [
         descricao: `O Vinho Rosé Português "Vinhas do Lasso" é uma deliciosa expressão da riqueza vitivinícola de Portugal. Este vinho é produzido a partir de uma cuidadosa colheita selecionada de uvas, resultando em uma experiência única e cativante para os amantes do vinho.`
     },
     {
-        id: 3,
-        uri: require("../images/vinho.png"),
-        origem: require("../images/brasil.png"),
-        nome: "Vinho Tinto",
-        preco: "182,09",
-        categoria: "Tinto",
-        descricao: ``
-    },
-    {
         id: 4,
         uri: require("../images/vinhoBranco.png"),
         origem: require("../images/italia.png"),
