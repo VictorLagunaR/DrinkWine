@@ -79,7 +79,7 @@ export default function Sacola({ navigation, route }) {
                   </View>
                 </View>
                 <View style={Estilos.cardBottom}>
-                  <Text style={Estilos.cardPreco}>R${vinho.preco}</Text>
+                  <Text style={Estilos.cardPreco}>R${vinho.preco.replace(",", ".") * vinho.quantidade}</Text>
                   <View style={Estilos.cardQuantidade}>
                     <TouchableOpacity
                       onPress={() => alteraQuantidadeCallback(vinho.id, -1, dadosSalvos)}
