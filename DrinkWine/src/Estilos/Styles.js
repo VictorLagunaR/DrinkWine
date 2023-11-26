@@ -199,6 +199,7 @@ export default StyleSheet.create({
         
     },
     cards:{
+        marginTop:15,
         gap:20,
         width:"100%"
     },
@@ -240,7 +241,10 @@ export default StyleSheet.create({
     cardQuantidade: {
         backgroundColor:"#D9D9D999",
         padding:5,
-        borderRadius:10
+        borderRadius:10,
+        flexDirection:"row",
+        alignItems:"center",
+        justifyContent:"center"
     },
     cardPreco: {
         color:"white",
@@ -259,6 +263,11 @@ export default StyleSheet.create({
     cardDeleteImage: {
         width: 20,
         height:25
+    },
+
+    arrow: {
+
+        
     }
 
 })

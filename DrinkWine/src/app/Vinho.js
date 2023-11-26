@@ -28,16 +28,10 @@ export default function App({ navigation, route }) {
       let getWines = await AsyncStorage.getItem("vinhos")
       if (getWines !== null && getWines !== undefined) {
         getWines = JSON.parse(getWines);
+        console.log(route.params.id)
         const verifyWine = getWines.filter((vinho) => {return vinho.id == route.params.id})
-        // console.log(verifyWine + "\n")
         if (verifyWine.length > 0) {
-          // console.log(verifyWine[0] + " aqui")
-          // vinhos.filter((vinho) => {
-          //   if(vinho.id == verifyWine[0].id){
-          //     vinho["quantidade"] = vinho["quantidade"] + 1;
-          //   } 
-          // })
-          newWines = vinhos
+          newWines = getWines
         }else{
           newWines = [...getWines, vinho]
         }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 import Estilos from '../Estilos/Styles';
 import usuario from '../data/users';
 
@@ -7,52 +7,53 @@ export default function MinhaConta() {
   const dadosUsuario = usuario[0];
 
   return (
-    <View style={Estilos.background}>
-      <View style={styles.main}>
-        <Image 
-          source={dadosUsuario.uri}
-          style={styles.imagem}
-        />
-        <Text style={styles.text}> Olá {dadosUsuario.nome} </Text>
-      </View>
+    <SafeAreaView style={Estilos.backgroundVinho}>
+      <ScrollView contentContainerStyle={{padding:10}}>
+          <View style={styles.main}>
+            <Image 
+              source={dadosUsuario.uri}
+              style={styles.imagem}
+            />
+            <Text style={styles.text}> Olá {dadosUsuario.nome} </Text>
+          </View>
 
-      <Text style={styles.textDados}> Dados </Text>
-      <View style={styles.line}></View>
+          <Text style={styles.textDados}> Dados </Text>
+          <View style={styles.line}></View>
 
-      <View style={styles.cont}>
-        <Text style={styles.textDadosCont}> Nome: </Text>
-        <Text style={styles.textDadosCont}> {dadosUsuario.nome} </Text>
-      </View>
+          <View style={styles.cont}>
+            <Text style={styles.textDadosCont}> Nome: </Text>
+            <Text style={styles.textDadosCont}> {dadosUsuario.nome} </Text>
+          </View>
 
-      <View style={styles.cont}>
-        <Text style={styles.textDadosCont}> E-mail: </Text>
-        <Text style={styles.textDadosCont}> {dadosUsuario.email} </Text>
-      </View>
+          <View style={styles.cont}>
+            <Text style={styles.textDadosCont}> E-mail: </Text>
+            <Text style={styles.textDadosCont}> {dadosUsuario.email} </Text>
+          </View>
 
-      <View style={styles.cont}>
-        <Text style={styles.textDadosCont}> Telefone: </Text>
-        <Text style={styles.textDadosCont}> {dadosUsuario.telefone} </Text>
-      </View>
+          <View style={styles.cont}>
+            <Text style={styles.textDadosCont}> Telefone: </Text>
+            <Text style={styles.textDadosCont}> {dadosUsuario.telefone} </Text>
+          </View>
 
-      <Text style={styles.textDados}> Endereço </Text>
-      <View style={styles.line}></View>
+          <Text style={styles.textDados}> Endereço </Text>
+          <View style={styles.line}></View>
 
-      <View style={styles.cont}>
-        <Text style={styles.textDadosCont}> Rua: </Text>
-        <Text style={styles.textDadosCont}> {dadosUsuario.rua} </Text>
-      </View>
+          <View style={styles.cont}>
+            <Text style={styles.textDadosCont}> Rua: </Text>
+            <Text style={styles.textDadosCont}> {dadosUsuario.rua} </Text>
+          </View>
 
-      <View style={styles.cont}>
-        <Text style={styles.textDadosCont}> Cep: </Text>
-        <Text style={styles.textDadosCont}> {dadosUsuario.cep} </Text>
-      </View>
+          <View style={styles.cont}>
+            <Text style={styles.textDadosCont}> Cep: </Text>
+            <Text style={styles.textDadosCont}> {dadosUsuario.cep} </Text>
+          </View>
 
-      <View style={styles.cont}>
-        <Text style={styles.textDadosCont}> Bairro: </Text>
-        <Text style={styles.textDadosCont}> {dadosUsuario.bairro} </Text>
-      </View>
-      
-    </View>
+          <View style={styles.cont}>
+            <Text style={styles.textDadosCont}> Bairro: </Text>
+            <Text style={styles.textDadosCont}> {dadosUsuario.bairro} </Text>
+          </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
