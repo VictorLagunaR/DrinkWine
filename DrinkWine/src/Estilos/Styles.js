@@ -265,9 +265,58 @@ export default StyleSheet.create({
         height:25
     },
 
-    arrow: {
-
+    totalContainer : {
+        backgroundColor: "#8D8D8D35",
+        borderRadius:10,
+        padding:10,
+        paddingHorizontal:15,
+        marginVertical:15,
+        width:"100%"
+    },
+    totalSectionFirst : {
+        flexDirection:"row",
+        justifyContent:"space-between",
+        alignItems:"center",
+        borderBottomColor:"#605F5F",
+        paddingVertical:5,
+        borderBottomColor:"#605F5F",
+        paddingBottom:8,
+        borderBottomWidth:1
+    },
+    totalSection : {
+        flexDirection:"row",
+        justifyContent:"space-between",
+        alignItems:"center",
+        paddingVertical:5,
+        paddingTop:8,
+    },
+    totalTitulo : {
+        color:"white",
+        fontSize:19
+    },
+    totalQuantidade : {
+        padding:5,
+        paddingHorizontal:8,
+        backgroundColor: "#D9D9D990",
+        color:"white",
+        fontSize:19,
+        borderRadius:10
+    },
+    totalValor : {
+        color:"#D47373",
+        fontSize:19
+    },
+    finalizarPedido : {
+        backgroundColor:"#51CF4Fe0",
         
+        alignItems:"center",
+        justifyContent:"center",
+        paddingHorizontal:15,
+        paddingVertical:10,
+        marginVertical:15,
+        marginBottom:55,
+        borderRadius:10
     }
+
 
 })

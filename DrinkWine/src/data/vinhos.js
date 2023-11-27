@@ -6,7 +6,7 @@ export default listaVinhos = [
         nome: "Vinho Tinto Suave",
         nomeSecundario: "San Martin 750ml",
         categoria: "Tinto",
-        preco: "302,09",
+        preco: "98,00",
         descricao: `O Vinho Tinto Suave "San Martin" é uma opção atraente para quem aprecia vinhos tintos com uma doçura suave e uma experiência de sabor mais acessível. Este vinho, produzido em um formato padrão de garrafa de 750 ml, oferece uma experiência única de paladar. Com uma graduação alcoólica geralmente moderada, o "San Martin" apresenta uma coloração vermelha atraente, que varia de vermelho-rubi a tons mais escuros, dependendo do lote e do produtor. Seu aroma é caracterizado por notas frutadas, que podem incluir ameixas maduras, cerejas e outras frutas vermelhas, proporcionando uma sensação convidativa no nariz.`
     },
     {
