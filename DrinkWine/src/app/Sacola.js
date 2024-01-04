@@ -64,7 +64,8 @@ export default function Sacola({ navigation, route }) {
   }, [route,excluir, quantidadeAlterada]);
   
   const GenerateItems = () => {
-    if (dadosSalvos !== null) {
+    console.log("dados Salvos: " +  dadosSalvos?.length)
+    if (dadosSalvos !== null && dadosSalvos?.length !== 0) {
       return(
         <View>
           <SafeAreaView style={Estilos.backgroundVinho}>

@@ -52,9 +52,6 @@ function HomeScreen({ navigation }) {
           }}>
             <Image source={require("../images/banner.png")} style={{ resizeMode: "contain", width: "100%", borderRadius: 15 }} />
           </TouchableOpacity>
-          <View style={Estilos.secao}>
-            <Text style={Estilos.text}>Aqui vai vir as opções de algumas ofertar em imagens </Text>
-          </View>
           <View style={Estilos.secaoVinhos}>
             <Text style={{ color: '#fff9', fontSize: 19, width: "100%", textAlign: 'left', marginBottom: 10 }}>Ofertas</Text>
             <FlatList

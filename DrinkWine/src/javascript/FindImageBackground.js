@@ -1,7 +1,7 @@
 export default function imageRequire(tipo) {
     let imagem;
     switch (tipo) {
-      case "Rose":
+      case "Rosé":
         imagem = require("../images/uvaRose.png");
         break;
       case "Branco":

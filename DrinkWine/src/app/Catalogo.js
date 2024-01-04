@@ -18,9 +18,9 @@ export default function Catalogo({navigation}) {
     <SafeAreaView style={Estilos.backgroundCatalogo}>
       <ScrollView>
         <View style={{marginTop:20}}>
-          <TouchableOpacity style={Estilos.vinhoBanner} onPress={() => {navigation.navigate("VinhoCategoria",{categoria:"Rose"})}}>
+          <TouchableOpacity style={Estilos.vinhoBanner} onPress={() => {navigation.navigate("VinhoCategoria",{categoria:"Rosé"})}}>
             <ImageBackground source={require("../images/bannerVinhoRose.png")} style={Estilos.vinhoBannerImagem} resizeMode="cover" imageStyle={{ borderRadius: 20}}>
-              <Text style={Estilos.vinhoBannerTitulo}> Rose </Text>
+              <Text style={Estilos.vinhoBannerTitulo}> Rosé </Text>
             </ImageBackground>
           </TouchableOpacity>
           <TouchableOpacity style={Estilos.vinhoBanner} onPress={() => {navigation.navigate("VinhoCategoria",{categoria:"Tinto"})}}>
